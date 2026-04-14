@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Annonce Ressuscitée — Augustin, Rhode-Saint-Genèse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #000887;
+            --accent: #ED51C2;
+            --text: #111111;
+            --surface: #F5F5F5;
+            --border: #E5E7EB;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Epilogue', sans-serif;
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 17px;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Hook d'ouverture - Priorité absolue */
+        .opening-hook {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            position: relative;
+            z-index: 100;
+        }
+
+        .opening-hook strong {
+            color: #FFD700;
+            font-weight: 800;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Typography */
+        h1 {
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(32px, 5vw, 44px);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary);
+            margin-bottom: 32px;
+        }
+
+        h3 {
+            font-size: clamp(22px, 3vw, 28px);
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .label-badge {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 56px 0;
+            }
+        }
+
+        /* Section 01: Hero */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--surface);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 680px;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .hero-subheadline {
+            font-size: 20px;
+            color: var(--text);
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .highlight-loss {
+            background-color: rgba(237, 81, 194, 0.1);
+            color: var(--accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Section 02: Visual Proof */
+        .before-after-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .before-after-grid::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: var(--border);
+            transform: translateX(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .before-after-grid {
+                grid-template-columns: 1fr;
+            }
+            .before-after-grid::after {
+                display: none;
+            }
+        }
+
+        .comparison-col {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .comparison-col img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .comparison-label {
+            padding: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary);
+            background-color: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Section 03: Autopsy */
+        .autopsy-card {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 32px;
+        }
+
+        .autopsy-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .autopsy-item:last-child {
+            border-bottom: none;
+        }
+
+        .autopsy-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .autopsy-text {
+            font-family: monospace;
+            background-color: var(--surface);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .autopsy-critique {
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        /* Section 04: Optimized Version */
+        #optimized {
+            background-color: var(--surface);
+        }
+
+        .value-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .optimized-card {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 32px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        }
+
+        .version-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+
+        .version-tab {
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            background-color: var(--white);
+            transition: all 0.2s;
+        }
+
+        .version-tab.active {
+            background-color: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .version-content {
+            display: none;
+        }
+
+        .version-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .optimized-text {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            white-space: pre-line;
+        }
+
+        .annotations {
+            margin-top: 32px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .annotation-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+
+        .annotation-number {
+            background-color: var(--accent);
+            color: var(--white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .annotation-text {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .language-section {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 2px solid var(--border);
+        }
+
+        .language-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .language-label::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        /* Property Image Insertion */
+        .property-image-container {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .property-image {
+            width: 100%;
+            max-width: 780px;
+            height: 440px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .property-image {
+                height: 280px;
+            }
+        }
+
+        .property-image-caption {
+            margin-top: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--primary);
+        }
+
+        /* Section 05: Loss Quantification */
+        .loss-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .loss-card {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .loss-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .loss-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .loss-context {
+            font-size: 14px;
+            color: #666;
+            margin-top: 12px;
+        }
+
+        .calculation-box {
+            background-color: var(--surface);
+            border-left: 4px solid var(--accent);
+            padding: 24px 32px;
+            margin-top: 40px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* Section 06: Mechanism (anciennement 07) */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        @media (max-width: 768px) {
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 800;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .step-desc {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Section 07: Final CTA (anciennement 08) */
+        #final-cta {
+            background-color: var(--surface);
+            text-align: center;
+        }
+
+        .cta-box {
+            background-color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 64px 48px;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+        }
+
+        @media (max-width: 768px) {
+            .cta-box {
+                padding: 40px 24px;
+            }
+        }
+
+        .cta-text {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            padding: 20px 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(237, 81, 194, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(237, 81, 194, 0.4);
+        }
+
+        .cta-microcopy {
+            font-size: 14px;
+            color: #666;
+            margin-top: 24px;
+            font-style: italic;
+        }
+
+        .personal-close {
+            font-weight: 700;
+            color: var(--primary);
+            margin-top: 32px;
+            font-size: 18px;
+        }
+
+        /* Utilities */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-0 {
+            margin-bottom: 0;
+        }
+
+        .mt-0 {
+            margin-top: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- HOOK D'OUVERTURE ABSOLU -->
+    <div class="opening-hook">
+        🎁 <strong>Ceci est un cadeau gratuit, sans condition.</strong> Livré ici, maintenant, sur cette page. Aucune contrepartie demandée.
+    </div>
+
+    <!-- SECTION-01-HERO -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="label-badge">Analyse exclusive • 1640 Rhode-Saint-Genèse</span>
+                <h1>Augustin, chaque jour que cette annonce reste en ligne, vous perdez des mandats.</h1>
+                <p class="hero-subheadline">
+                    Voici exactement ce que votre villa à <span class="highlight-loss">l'Ancien Golf</span> pourrait générer comme leads qualifiés — si nous la réécrivions aujourd'hui.
+                </p>
+                <a href="#optimized" class="cta-button" style="font-size: 16px; padding: 16px 32px;">Voir mon annonce optimisée →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION-02-VISUAL-PROOF -->
+    <section id="proof">
+        <div class="container">
+            <div class="text-center">
+                <span class="label-badge">Levier : Curiosité → Perte</span>
+                <h2>L'écart qui coûte cher</h2>
+                <p style="max-width: 600px; margin: 0 auto 40px;">À gauche : ce que les acheteurs voient actuellement. À droite : ce qu'ils pourraient voir.</p>
+            </div>
+            
+            <div class="before-after-grid">
+                <div class="comparison-col">
+                    <img src="before.jpg" alt="Annonce actuelle - Capture d'écran">
+                    <div class="comparison-label">Votre annonce actuelle</div>
+                </div>
+                <div class="comparison-col">
+                    <img src="after.jpg" alt="Version optimisée - Mockup">
+                    <div class="comparison-label">Version optimisée</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION-03-CURRENT-LISTING-AUTOPSY -->
+    <section id="autopsy">
+        <div class="container">
+            <div class="text-center">
+                <span class="label-badge">Levier : Frustration</span>
+                <h2>L'autopsie de votre annonce actuelle</h2>
+                <p style="max-width: 600px; margin: 0 auto 40px;">Une analyse factuelle des points de friction qui tuent vos conversions.</p>
+            </div>
+
+            <div class="autopsy-card">
+                <div class="autopsy-item">
+                    <div class="autopsy-label">❌ Faute #1 : Titre générique</div>
+                    <div class="autopsy-text">"Maison à vendre"</div>
+                    <div class="autopsy-critique">Perdu dans la masse. Aucun différenciateur. Aucune émotion. Aucune mention du quartier premium "Ancien Golf" qui justifie le prix.</div>
+                </div>
+
+                <div class="autopsy-item">
+                    <div class="autopsy-label">❌ Faute #2 : Affichage technique amateur</div>
+                    <div class="autopsy-text">"1590000€" vs "1 590 000 €" (incohérent)</div>
+                    <div class="autopsy-critique">Double formatage du prix qui crée de la confusion. Le symbole "€" collé aux chiffres diminue la perception de valeur.</div>
+                </div>
+
+                <div class="autopsy-item">
+                    <div class="autopsy-label">❌ Faute #3 : Friction inutile</div>
+                    <div class="autopsy-text">"Demander l'adresse exacte"</div>
+                    <div class="autopsy-critique">Chaque clic demandé est une perte de lead. L'adresse est déjà dans le titre (1640 — Rhode-Saint-Genèse), mais créée comme obstacle.</div>
+                </div>
+
+                <div class="autopsy-item">
+                    <div class="autopsy-label">❌ Faute #4 : Liste de pièces, pas de vision</div>
+                    <div class="autopsy-text">"Hall d'entrée desservant un spacieux salon (42m²)..." [liste technique]</div>
+                    <div class="autopsy-critique">Rédigé comme un PV de notaire. Aucune histoire. Aucun bénéfice émotionnel. L'acheteur ne visualise pas sa vie ici.</div>
+                </div>
+
+                <div class="autopsy-item">
+                    <div class="autopsy-label">❌ Faute #5 : Atouts enterrés</div>
+                    <div class="autopsy-text">"Piscine chauffée et filtrée" [à la fin, sans contexte]</div>
+                    <div class="autopsy-critique">Différenciateur majeur (piscine chauffée sur 28 ares) noyé au milieu de "Double garage" et "Buderus". PEB (C) mentionné mais non valorisé.</div>
+                </div>
+
+                <div class="autopsy-item">
+                    <div class="autopsy-label">❌ Faute #6 : Absence d'urgence</div>
+                    <div class="autopsy-critique">Aucun call-to-action. Aucune date butoir. Aucune exclusivité suggérée. L'annonce attend passivement.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION-04-OPTIMIZED-VERSION -->
+    <section id="optimized">
+        <div class="container">
+            <div class="text-center">
+                <span class="label-badge">Levier : Ego</span>
+                <div class="value-badge">Votre cadeau — Valeur marché 450 €</div>
+                <h2>Voici votre annonce réécrite, prête à publier</h2>
+                <p style="max-width: 600px; margin: 0 auto 40px;">Utilisez-la immédiatement. Tous les droits vous sont cédés. Nous avons créé trois versions : court (Immoweb), long (réseaux sociaux), et néerlandais + anglais pour le marché bruxellois.</p>
+            </div>
+
+            <div class="optimized-card">
+                <!-- Version Française -->
+                <div class="language-section" style="margin-top: 0; border-top: none; padding-top: 0;">
+                    <div class="language-label">Version Française — Format Immoweb (Optimisée)</div>
+                    <div class="optimized-text" style="font-size: 18px; line-height: 1.8; color: var(--text);">
+Superbe villa 4 façades avec piscine dans le très prisé quartier de l'Ancien Golf.
+
+Nichée à Rhode-Saint-Genèse, cette propriété offre une intimité absolue sur un terrain de 28 ares baigné de lumière (orientation Sud-Ouest). Avec 290 m² habitables, la fluidité des espaces est optimale : un vaste salon de 42 m² avec feu ouvert, une salle à manger séparée et une cuisine dînatoire Siematic hyper-équipée.
+
+L'étage distribue parfaitement 5 chambres généreuses (de 12 à 25 m²), toutes dotées de placards encastrés, dont une suite parentale avec salle de bains attenante, complétées par deux salles d'eau supplémentaires.
+
+Atouts clés : Piscine chauffée et filtrée, terrasse de 80 m², double garage, bureau indépendant de 9 m².
+Technique : PEB C, chaudière gaz à condensation Buderus, double vitrage, alarme. Électricité à mettre en conformité.
+Disponibilité : 31 août 2026.
+
+Une propriété rare sur le marché. Contactez l'agence Modifa Rhode-St-Genèse dès aujourd'hui pour planifier votre visite.
+                    </div>
+                </div>
+
+                <div class="annotations">
+                    <h3 style="font-size: 18px; margin-bottom: 20px;">Les 5 améliorations stratégiques :</h3>
+                    
+                    <div class="annotation-item">
+                        <div class="annotation-number">1</div>
+                        <div class="annotation-text"><strong>Accroche différenciée :</strong> "4 façades" + "piscine" + "Ancien Golf" en première ligne pour capter l'attention qualifiée immédiatement.</div>
+                    </div>
+                    
+                    <div class="annotation-item">
+                        <div class="annotation-number">2</div>
+                        <div class="annotation-text"><strong>Hiérarchie émotionnelle :</strong> Intimité → Lumière → Fluidité des espaces. On vend un mode de vie, pas des m².</div>
+                    </div>
+                    
+                    <div class="annotation-item">
+                        <div class="annotation-number">3</div>
+                        <div class="annotation-text"><strong>Section "Atouts clés" :</strong> Isolation des différenciateurs (piscine chauffée, terrasse 80m²) pour le scanning rapide.</div>
+                    </div>
+                    
+                    <div class="annotation-item">
+                        <div class="annotation-number">4</div>
+                        <div class="annotation-text"><strong>Transparence technique :</strong> Mention honnête de l'électricité à mettre en conformité pour qualifier les leads (évite les visites inutiles).</div>
+                    </div>
+                    
+                    <div class="annotation-item">
+                        <div class="annotation-number">5</div>
+                        <div class="annotation-text"><strong>Urgence douce :</strong> "Propriété rare" + date butoir (31 août 2026) pour inciter à l'action sans agressivité.</div>
+                    </div>
+                </div>
+
+                <!-- Version Longue -->
+                <div class="language-section">
+                    <div class="language-label">Version Longue — Réseaux Sociaux / Dossier</div>
+                    <div class="optimized-text" style="font-size: 16px; line-height: 1.8; color: #444;">
+Élégance et volumes exceptionnels au cœur de l'Ancien Golf à Rhode-Saint-Genèse.
+
+Située dans le quartier extrêmement convoité de l'« Ancien Golf », cette majestueuse villa de 1988 allie volumes généreux, intimité totale et prestations de qualité. Sur une parcelle exceptionnelle de près de 28 ares (2 790 m²) baignée de lumière grâce à son orientation Sud-Ouest, ce bien de 290 m² habitables est une véritable invitation à la vie de famille, à l'abri des regards.
+
+Dès l'entrée, un hall accueillant vous guide vers de vastes espaces de réception. Le salon de 42 m², agrémenté d'un feu ouvert, offre un cadre chaleureux et s'ouvre harmonieusement sur l'extérieur. Il est complété par une salle à manger distincte de 20 m² et un bureau séparé, idéal pour le télétravail. La cuisine dînatoire hyper-équipée (Siematic, 22 m²) ravira les amateurs de gastronomie et dispose d'un espace convivial pour les repas quotidiens.
+
+À l'étage, l'espace nuit est remarquablement structuré pour garantir l'intimité de chacun. Le hall dessert 5 belles chambres (allant de 12 à 25 m²), toutes intelligemment optimisées avec des placards encastrés. La suite principale bénéficie de sa propre salle de bains attenante, tandis que deux salles d'eau supplémentaires et trois toilettes assurent un confort optimal pour toute la maisonnée.
+
+À l'extérieur, le vaste jardin de 2 200 m² s'articule autour d'une superbe terrasse de 80 m² et d'une piscine chauffée et filtrée, promesse de moments estivaux exceptionnels.
+
+Caractéristiques techniques :
+Énergie : PEB C (214 kWh/m²), chaudière au gaz à condensation Buderus, double vitrage.
+Sécurité et pratique : Système d'alarme, double garage intégré, buanderie séparée.
+À noter : L'installation électrique nécessite une mise en conformité.
+
+La disponibilité est fixée au 31 août 2026. Ne laissez pas passer cette opportunité d'acquérir un bien d'exception dans un environnement privilégié. Contactez Modifa Rhode-St-Genèse pour organiser une visite ciblée.
+                    </div>
+                </div>
+
+                <!-- Version Néerlandaise -->
+                <div class="language-section">
+                    <div class="language-label">Version Néerlandaise — Format Immoweb</div>
+                    <div class="optimized-text" style="font-size: 16px; line-height: 1.8; color: #444;">
+Prachtige open bebouwing met zwembad in de zeer gegeerde wijk "Ancien Golf".
+
+Genesteld in Sint-Genesius-Rode, biedt deze eigendom absolute privacy op een lichtrijk perceel van 28 are (zuidwestelijke oriëntatie). Met 290 m² bewoonbare oppervlakte is de indeling optimaal: een ruime woonkamer (42 m²) met open haard, een aparte eetkamer en een hyper-uitgeruste Siematic leefkeuken.
+
+De bovenverdieping verdeelt perfect 5 royale slaapkamers (12 tot 25 m²), allen voorzien van ingemaakte kasten. Hieronder bevindt zich een master suite met aangrenzende badkamer, aangevuld met twee extra doucheruimtes.
+
+Belangrijkste troeven: Verwarmd en gefilterd zwembad, terras van 80 m², dubbele garage, apart bureau (9 m²).
+Technisch: EPC C, Buderus gascondensatieketel, dubbele beglazing, alarmsysteem. Elektriciteit niet conform.
+Beschikbaarheid: 31 augustus 2026.
+
+Een zeldzame kans op de markt. Neem vandaag nog contact op met Modifa Rhode-St-Genèse om een bezoek in te plannen.
+                    </div>
+                </div>
+
+                <!-- Version Anglaise -->
+                <div class="language-section">
+                    <div class="language-label">Version Anglaise — Marché International</div>
+                    <div class="optimized-text" style="font-size: 16px; line-height: 1.8; color: #444;">
+Stunning detached villa with pool in the highly sought-after "Ancien Golf" neighborhood.
+
+Nestled in Rhode-Saint-Genèse, this property offers absolute privacy on a bright 28-are plot (southwest facing). With 290 sqm of living space, the layout is perfectly optimized: a spacious 42 sqm living room with an open fireplace, a separate dining room, and a fully equipped Siematic eat-in kitchen.
+
+The first floor flawlessly distributes 5 generous bedrooms (12 to 25 sqm), all featuring built-in closets. This includes a master suite with an en-suite bathroom, complemented by two additional shower rooms.
+
+Key assets: Heated and filtered swimming pool, 80 sqm terrace, double garage, separate 9 sqm office.
+Technical data: EPC C, Buderus gas condensation boiler, double glazing, alarm system. Electricity is non-compliant.
+Availability: August 31, 2026.
+
+A rare property on the market. Contact the Modifa Rhode-St-Genèse agency today to schedule your viewing.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSERTION PROPERTY IMAGE -->
+    <div class="property-image-container">
+        <img src="property.jpg" alt="Villa Ancien Golf - 1640 Rhode-Saint-Genèse" class="property-image">
+        <div class="property-image-caption">Le bien concerné — 1640 Rhode-Saint-Genèse</div>
+    </div>
+
+    <!-- SECTION-05-LOSS-QUANTIFICATION -->
+    <section id="loss">
+        <div class="container">
+            <div class="text-center">
+                <span class="label-badge">Levier : Perte</span>
+                <h2>Calcul du coût de l'inaction</h2>
+                <p style="max-width: 600px; margin: 0 auto 40px;">Ce que votre annonce non-optimisée vous coûte concrètement, chaque semaine.</p>
+            </div>
+
+            <div class="loss-grid">
+                <div class="loss-card">
+                    <div class="loss-number">111</div>
+                    <div class="loss-label">Jours moyens de vente</div>
+                    <div class="loss-context">Région flamande, maisons standard (ERA 2025)</div>
+                </div>
+                <div class="loss-card">
+                    <div class="loss-number">119</div>
+                    <div class="loss-label">Maisons concurrentes</div>
+                    <div class="loss-context">En vente à Rhode-Saint-Genèse (Avril 2026)</div>
+                </div>
+                <div class="loss-card">
+                    <div class="loss-number">+30%</div>
+                    <div class="loss-label">Délai additionnel</div>
+                    <div class="loss-context">Estimation conservative pour annonce faible (Home Staging Institute)</div>
+                </div>
+            </div>
+
+            <div class="calculation-box">
+                <h3 style="font-size: 20px; margin-bottom: 16px; color: var(--primary);">Le calcul qu'Augustin ne voit pas :</h3>
+                <p style="margin-bottom: 12px;"><strong>Coût de possession :</strong> 1 590 000 € à 4% hypothétique = ~5 300 €/mois de frais financiers, entretien, et opportunité coûtée.</p>
+                <p style="margin-bottom: 12px;"><strong>Leads perdus :</strong> Une annance optimisée génère en moyenne 40-60% de demandes de visite en plus sur le segment premium.</p>
+                <p style="margin-bottom: 0;"><strong>Impact :</strong> 30 jours de délai supplémentaire = ~5 300 € perdus + 1 mandat potentiel donné à un concurrent.</p>
+            </div>
+
+            <p class="text-center" style="margin-top: 32px; font-size: 14px; color: #666; font-style: italic;">
+                Sources : Baromètre ERA 2025, données Immoweb Avril 2026, benchmarks secteur home staging.
+            </p>
+        </div>
+    </section>
+
+    <!-- SECTION-06-MECHANISM -->
+    <section id="mechanism">
+        <div class="container">
+            <div class="text-center">
+                <span class="label-badge">Levier : Frustration (résolue)</span>
+                <h2>Comment nous travaillons</h2>
+                <p style="max-width: 600px; margin: 0 auto 40px;">Un processus simplifié en 3 étapes. Zéro complexité.</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Audit express</div>
+                    <div class="step-desc">Nous analysons vos annonces actuelles et identifions les fuites de conversion en 48h.</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Optimisation totale</div>
+                    <div class="step-desc">Rédaction multilingue, mise en page, et stratégie de diffusion adaptée à votre cible.</div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Automatisation</div>
+                    <div class="step-desc">Mise en place de filtres qualité pour que vous ne receviez que des leads chauds et qualifiés.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION-07-FINAL-CTA -->
+    <section id="final-cta">
+        <div class="container">
+            <div class="cta-box">
+                <span class="label-badge">Prochaine étape</span>
+                <h2 style="margin-bottom: 24px;">Vous avez maintenant une annonce qui convertit.</h2>
+                
+                <p class="cta-text">
+                    Voici ce que nous pouvons bâtir ensemble : un système qui optimise <strong>toutes vos listings</strong> et votre présence sociale pour attirer plus de mandats — tout en automatisant le filtrage des prospects pour ne plus jamais perdre une heure avec des curieux.
+                </p>
+
+                <a href="mailto:gradi@homieuxmedia.com" class="cta-button">Discuter de mes besoins avec Gradi</a>
+
+                <p class="cta-microcopy">
+                    Chaque annonce qui reste non-optimisée est un mandat donné à un concurrent.
+                </p>
+
+                <p class="personal-close">
+                    À bientôt, Augustin.
+                </p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
